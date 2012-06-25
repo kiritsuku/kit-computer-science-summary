@@ -1,0 +1,186 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry} % margins
+\usepackage{fancyhdr} % site layout
+\usepackage{mathabx}
+
+\begin{document}
+
+\section{Planung}
+\section{Definition}
+\section{Entwurf (Design)}
+
+\subsection{Entwurfsmuster}
+
+\begin{itemize}
+  \item Entkopplungsmuster
+  \begin{itemize}
+    \item Definition
+    \begin{itemize}
+      \item Ein System wird in Teilkomponenten aufgeteilt, die unabhängig voneinander verwendet und modifiziert werden können.
+      \item Kommunikation zwischen Teilkomponenten kann über spezielle Schnittstellen, den Kopplungsgliedern, erfolgen.
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+      \item \textit{Adapter (adapter)}: Lässt inkompatible Schnittstellen miteinander zusammenarbeiten
+      \item \textit{Beobachter (observer)}: Änderung eines Zustandes führt zu einer Benachrichtigung und Aktualisierung aller abhängigen Komponenten. 
+      \item \textit{Brücke (bridge)}: Entkoppelt eine Abstraktion von ihrer Implementierung, damit beide unabhängig voneinander variiert werden können.
+      \item \textit{Iterator (iterator)}: Ermöglicht den sequentiellen Zugriff auf die Elementen eines Containers ohne dabei die interne Repräsentation der Elemente offenlegen zu müssen.
+      \item \textit{Stellvertreter (proxy)}: Kontrolliert den Zugriff auf ein Objekt durch eine vorgelagerte Schnittstelle.
+      \item \textit{Dekorierer (decorator)}: Kann Funktionalität dynamisch zu einem Objekt hinzufügen
+      \item \textit{Vermittler (mediator)}: Kapselt mehrere Objekte um sie gemeinsam zu verwalten und um zu verhindern, dass die Objekte sich gegenseitig referenzieren.
+    \end{itemize}
+  \end{itemize}
+  \item Variantenmuster
+  \begin{itemize}
+    \item Definition
+    \begin{itemize}
+      \item Gemeinsamkeiten von verwandten Einheiten werden extrahiert und an einer einzigen Stelle beschrieben
+      \item Einheitliche Verwendung von Komponenten
+      \item Vermeidung von Codeduplikaten
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+      \item \textit{Abstrakte Fabrik (abstract factory)}: Erzeugt Familien von Objekten, die wiederrum die konkreten Implementierungen erzeugen.
+      \item \textit{Besucher (visitor)}: Trennt Verhaltensweisen von dem dazugehörigen Objekt 
+      \item \textit{Erbauer}
+      \item \textit{Fabrikmethode (factory method)}: Ermöglicht die Erzeugung verschiedenen konkreter Implementierungen indem die Erzeugung gekapselt über eine gemeinsame Schnittstelle erfolgt. 
+      \item \textit{Kompositum (composite)}: Ermöglicht es Gruppen von Objekten als einzelne Objekte zu betrachten, indem sie zusammengefasst und über eine einzelne Schnittstelle gemeinsam angesprochen werden können.
+      \item \textit{Schablonenmethode (template method)}: Definiert das Skelett eines Algorithmus in einer Operation und delegiert einzelne Schritte an Unterklassen
+      \item \textit{Strategie (strategy)}: Definiert eine Schnittstelle, die den Zugriff auf verschiedene Implementierungen erlauben und sie somit zur Laufzeit austauschbar machen.
+    \end{itemize}
+  \end{itemize}
+  \item Zustandshandhabungs-Muster
+  \begin{itemize}
+    \item Definition
+    \begin{itemize}
+      \item Zustände von Objekten werden behandelt
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+      \item \textit{Einzelstück (singleton)}: Bewirkt, dass eine Klasse genau ein mal instanziiert werden kann.
+      \item \textit{Fliegengewicht (flyweight)}: Dient als Cache um zu verhindern, dass oft benutzte Objekte immer wieder neu erzeugt werden müssen.
+      \item \textit{Memento (memento)}: Ermöglicht es den Zustand eines Objekts zu sichern um jederzeit wieder darauf zugreifen zu könnnen.
+      \item \textit{Prototyp (prototype)}: Stellt einen unveränderlichen Ausgangszustand bereit, der nur modifiziert werden kann nachdem er kopiert wurde.
+      \item \textit{Zustand (state)}: Inbegriff eines Automaten - Das Verhalten eines Objekts hängt von dessen Zustand ab.
+    \end{itemize}
+  \end{itemize}
+  \item Steuerungs-Muster
+  \begin{itemize}
+    \item Definition
+    \begin{itemize}
+      \item Kontrollfluss wird kontrolliert, indem zur richtigen Zeit die richtigen Methoden aufgerufen werden.
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+      \item \textit{Befehl (command)}: Operation wird als Objekt definiert - Definition eines Lambdas.
+      \item \textit{Auftraggeber/-nehmer (master/worker)}: Zu verrichtende Aufgaben werden von einem Master auf die Worker aufgeteilt. Ermöglicht fehlertolerante und parallele Berechnungen - Definition von Aktoren.
+    \end{itemize}
+  \end{itemize}
+  \item Virtuelle Maschinen
+  \begin{itemize}
+    \item Definition
+    \begin{itemize}
+      \item Simulation eines Systems, das ein Programm mit bestimmten Eingabedaten arbeiten lässt. 
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+      \item \textit{Interpretierer (interpreter)}: Spezifiziert die Auswertung von Expressions und Statements.
+    \end{itemize}
+  \end{itemize}
+  \item Bequemlichkeitsmuster
+  \begin{itemize}
+    \item Definition
+    \begin{itemize}
+      \item Dienen dem Ersparnis von Schreib- und Denkarbeit.
+    \end{itemize}
+    \item Beispiele
+    \begin{itemize}
+      \item \textit{Bequemlichkeits-Klasse (convenience class)}: Klasse, die nur zur Datenhaltung dient bzw. Bequemlichkeits-Methoden bereitstellt.
+      \item \textit{Bequemlichkeits-Methode (conveniece method)}: Default-Parameter für Methoden.
+      \item \textit{Fassade (facade)}: Bietet eine einheitliche Schnittstelle, für eine Menge weiterer Schnittstellen.
+      \item \textit{Null-Objekt (null object)}: Meist als Singleton implementiertes Objekt, das eine Implementierung einer Schnittstelle anbietet, die nichts tut.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\section{Implementierung}
+
+\section{Testen und Prüfen}
+\begin{itemize}
+  \item Testverfahren
+  \begin{itemize}
+    \item Testende Verfahren $\to$ Fehler erkennen
+    \item Verifizierende Verfahren $\to$ Korrektheit beweisen
+    \item Analysierende Verfahren $\to$ Eigenschaften einer Systemkomponente bestimmen
+  \end{itemize}
+  \item Fehlerarten
+  \begin{itemize}
+    \item \textit{Versagen/Ausfall (failure, fault)}: Ein Ereignis - Software weicht im Verhalten von der Spezifikation ab.
+    \item \textit{Defekt (bug)}: Ein Zustand - ein Mangel in einem Softwareprodukt.
+    \item \textit{Irrtum/Herstellungsfehler (mistake)}: Ein Vorgang - menschliche Aktion, die einen Defekt verursacht.
+  \end{itemize}
+  \item Testhelfer
+  \begin{itemize}
+    \item \textit{Stummel (stub)}: Platzhalter für noch nicht umgesetzte Funktionalität
+    \item \textit{Attrappe (dummy)}: Simulation der Implementierung
+    \item \textit{Nachahmung (mock)}: Dummy mit zusätzlicher Funktionalität, wie z.B. Vorgabe von Verhaltensweisen
+  \end{itemize}
+  \item Fehlerklassen
+  \begin{itemize}
+    \item Anforderungsfehler (Defekt im Pflichtenheft)
+    \begin{itemize}
+      \item Inkorrekte Angaben von Benutzerwünschen
+      \item Unvollständige Angaben über funktionale Anforderungen etc.
+      \item Inkonsistenz verschiedener Anforderungen
+      \item Undurchführbarkeit
+    \end{itemize}
+    \item Entwurfsfehler (Defekt in der Spezifikation)
+    \begin{itemize}
+      \item Unvollständige oder fehlerhafte Umsetzung der Anforderung
+      \item Inkonsistenz der Spezifikation oder des Entwurfs
+      \item Inkonsistenz zwischen Anforderung, Spezifikation und Entwurf
+    \end{itemize}
+    \item Implementierungsfehler (Defekt im Programm)
+    \begin{itemize}
+      \item Fehlerhafte Umsetzung der Spezifikation in ein Programm
+    \end{itemize}
+  \end{itemize}
+  \item Begriffe
+  \begin{itemize}
+    \item \textit{Softwaretest}: Führt eine Softwarekomponente aus und überprüft deren Verhalten
+    \item \textit{Testobjekt/Testling/Prüfling}: Die zu überprüfende Softwarekomponente
+    \item \textit{Testfall}: Datensatz, der zur Ausführung eines Testlings benötigt wird
+    \item \textit{Testtreiber/Testrahmen}: Versorgt Testlinge mit Testfällen und stößt deren Ausführung an
+  \end{itemize}
+  \item Testphasen
+  \begin{itemize}
+    \item \textit{Komponententest (unit test)}: Überprüfung von Einzelmodulen
+    \item \textit{Integrationstest (integration test)}: Überprüfung der Zusammenarbeit von Einzelmodulen 
+    \item \textit{Systemtest (system test)}: Abschließende Tests beim Entwickler in realer bzw. realistischer Umgebung (ohne Kunde)
+    \item \textit{Abnahmetest (acceptance test)}: Test in realer Umgebung in Zusammenarbeit mit dem Kunden
+  \end{itemize}
+  \item Klassifikation testender Verfahren
+  \begin{itemize}
+    \item Dynamische Verfahren
+    \begin{itemize}
+      \item Software wird mit Testfällen versehen und ausgeführt.
+      \begin{itemize}
+        \item \textit{White Box Testen}: Bestimmen der Werte mit Kenntnis von Kontroll- und/oder Datenfluss
+        \item \textit{Black Box Testen}: Bestimmen der Werte ohne Kenntnis von Kontroll- und/oder Datenfluss aus der Spezifikation heraus
+      \end{itemize}
+      \item Testen in realer (realistischer) Umgebung
+      \item Stichprobenverfahren, d.h. die Korrektheit der Software wird nicht bewiesen
+    \end{itemize}
+    \item Statische Verfahren
+    \begin{itemize}
+      \item Analyse des Quellcodes
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\section{Abnahme, Einsatz und Wartung}
+
+\end{document}
