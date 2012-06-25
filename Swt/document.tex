@@ -2,9 +2,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{mathabx}
 \usepackage[margin=2cm]{geometry} % margins
 \usepackage{fancyhdr} % site layout
-\usepackage{mathabx}
 
 \begin{document}
 
@@ -179,6 +182,60 @@
       \item Analyse des Quellcodes
     \end{itemize}
   \end{itemize}
+\end{itemize}
+
+\subsection{Definitionen}
+\begin{itemize}
+  \item Zwischensprache
+  \item Strukturerhaltende Transformation
+  \item Grundblock (GB) (basic block)
+  \begin{itemize}
+    \item Fortlaufende Folge von Anweisungen der Zwischensprache
+    \item Eintritt nur am Anfang
+    \item Austritt nur am Ende
+  \end{itemize}
+  \item Kontrollflussgraph (KFG) (conrtol flow graph)
+  \begin{itemize}
+    \item Gerichteter Grah $G$ eines Programms $P$ mit $G=(N,E,n_{\text{start}},n_{\text{stopp}})$ wobei
+    \begin{itemize}
+      \item \textit{$N$}: Menge der GB in $P$
+      \item \textit{$E\subseteq N\times N$}: Menge der Kanten, die die Ausführungsreihenfolge von zwei GB angeben
+      \item \textit{$n_{\text{start}}$}: Startblock
+      \item \textit{$n_{\text{stopp}}$}: Stoppblock
+    \end{itemize}
+  \end{itemize}
+  \item Zweig (branch), vollständige Pfade
+  \begin{itemize}
+    \item Eine Kante $e\in E$ in einem KFG $G$ wird Zweig genannt
+    \item Pfade, die mit $n_{\text{start}}$ anfangen und bei $n_{\text{stopp}}$ aufhören heißen vollständige Pfade
+  \end{itemize}
+  \item Anweisungsüberdeckung (statement coverage)
+  \begin{itemize}
+    \item Teststrategie, als $C_{\text{Anweisung}}$ oder $C_0$ bezeichnet, die die Ausführung aller GB in $P$ verlangt
+    \[
+    C_{\text{Anweisung}}=\frac{\text{Anzahl durchlaufener Anweisungen}}{\text{Anzahl aller Anweisungen}}
+    \]
+    \item Nicht ausführbare Programmteile können gefunden werden
+  \end{itemize}
+  \item Zweigüberdeckung (branch coverage)
+  \begin{itemize}
+    \item Teststrategie, als $C_{\text{Zweig}}$ oder $C_1$ bezeichnet, die das Traversieren aller Zweige im KFG in $G$ verlangt.
+    \[
+    C_{\text{Zweig}}=\frac{\text{Anzahl traversierter Zweige}}{\text{Anzahl aller Zweige}}
+    \]
+    \item Nicht ausgeführte Zweige können entdeckt werden
+    \item Berücksichtigt weder Pfade noch komplexe Bedingungen
+    \item Nicht ausreichend zum Testen von Schleifen
+    \item Fehlende Zweige nicht testbar
+  \end{itemize}
+\end{itemize}
+
+\subsection{Kontrollflussorientierte (KFO) Testverfahren}
+\begin{itemize}
+  \item Anweisungsüberdeckung
+  \item Zweigüberdeckung
+  \item Pfadüberdeckung (vollständig, strukturiert)
+  \item Bedingungsüberdeckung (einfach, mehrfach, minimal mehrfach)
 \end{itemize}
 
 \section{Abnahme, Einsatz und Wartung}
