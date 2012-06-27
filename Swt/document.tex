@@ -184,7 +184,7 @@
   \end{itemize}
 \end{itemize}
 
-\subsection{Definitionen}
+\subsection{Kontrollflussorientierte (KFO) Testverfahren}
 \begin{itemize}
   \item Zwischensprache
   \item Strukturerhaltende Transformation
@@ -216,6 +216,7 @@
     C_{\text{Anweisung}}=\frac{\text{Anzahl durchlaufener Anweisungen}}{\text{Anzahl aller Anweisungen}}
     \]
     \item Nicht ausführbare Programmteile können gefunden werden
+    \item Nur angebracht wenn keine Schleifen oder Bedingungen ausgeführt werden, ansonsten nicht ausreichend
   \end{itemize}
   \item Zweigüberdeckung (branch coverage)
   \begin{itemize}
@@ -227,15 +228,78 @@
     \item Berücksichtigt weder Pfade noch komplexe Bedingungen
     \item Nicht ausreichend zum Testen von Schleifen
     \item Fehlende Zweige nicht testbar
+    \item Angebracht wenn keine keine Schleifen und nur atomare Bedingungen vorhanden sind
+  \end{itemize}
+  \item Pfadüberdeckung (path coverage)
+  \begin{itemize}
+    \item Teststrategie, als $C_2$ bezeichnet, fordert die Ausführung aller unterschiedlichen Pfade im Programm
+    \item Pfadanzahl wächst bei Schleifen sehr stark
+    \item Manche Pfade können nicht ausführbar sein, durch sich gegenseitig ausschließende Bedingungen
+    \item Mächtigste KFO Teststrategie, aber nicht praktikabel, da schon für kleine Programme zu aufwendig
+  \end{itemize}
+  \item Bedingungsüberdeckung (BÜ) (condition coverage)
+  \begin{itemize}
+    \item Zweigüberdeckung nicht immer ausreichend (z.B. bei hierarchischen Bedingungen).
+    \item Einfache BÜ
+    \begin{itemize}
+      \item Jede atomare Bedingung muss einmal mit True und einmal mit False belegt werden
+      \item Enthält weder Zweig- noch Anweisungsüberdeckung
+      \item Daher: Nicht ausreichendes Testkriterium, noch schwächer als Anweisungsüberdeckung
+    \end{itemize}
+    \item Mehrfache BÜ
+    \begin{itemize}
+      \item Jede atomare Bedingung muss mit allen möglichen Kombinationen von True und False belegt werden
+      \item $2^n$ Kombinationen bei $n$ Bedingungen
+      \item Enthält Zweig- und Anweisungsüberdeckung, aber sehr aufwendig
+    \end{itemize}
+    \item Minimal-mehrfach BÜ
+    \begin{itemize}
+      \item Jede atomare oder zusammengesetzte Bedingung muss zu True oder False evaluieren
+      \item Enthält Zweigüberdeckung, daher sinnvolle Ergänzung
+    \end{itemize}
+  \end{itemize}
+  \item Subsumieren
+  \begin{itemize}
+    \item Ein Testverfahren für Kriterium $a$ subsumiert ein Testverfahren für Kriterium $b$, wenn alle Pfade, die $a$ erfüllen, auch $b$ erfüllen
+    \item Hierarchie der KFO-Teststrategien ($\implies$: subsumiert)
+    \begin{itemize}
+      \item Pfadüberdeckung $\implies$ Zweigüberdeckung $\implies$ Anweisungsüberdeckung
+      \item Mehrfache BÜ $\implies$ Minimal-mehrfach BÜ $\implies$ Einfache BÜ
+      \item Minimal-mehrfach BÜ $\implies$ Zweigüberdeckung
+    \end{itemize}
+  \end{itemize}
+  \item Kurzauswertung
+  \begin{itemize}
+    \item Die Auswertung einer zusammengesetzten Bedingung wird abgebrochen, sobald das Ergebnis feststeht
+    \item Bsp: \texttt{a != 0 \&\& x/a > 1} $\implies$ Auswertung wird abgebrochen wenn $a=0$
+    \item Erfordert mehr Testen, da weiter rechts stehende Ausdrücke von den weiter links stehenden abhängig sind.
+    \item Seiteneffekte der aufgerufenen Ausdrücke beachten
   \end{itemize}
 \end{itemize}
 
-\subsection{Kontrollflussorientierte (KFO) Testverfahren}
+\subsection{Funktionale Tests}
 \begin{itemize}
-  \item Anweisungsüberdeckung
-  \item Zweigüberdeckung
-  \item Pfadüberdeckung (vollständig, strukturiert)
-  \item Bedingungsüberdeckung (einfach, mehrfach, minimal mehrfach)
+  \item Ziel: Testen der spezifizierten Funktionalität
+  \item Testfälle aus der Spezifikation ableiten
+  \item Vorteil: Testfälle unabhängig von der Implementierung erstellbar
+  \item Nachteil: mögl. kritische Pfade nicht bekannt und nicht getestet
+  \item Funktionale Äquivalenzklassenbildung
+  \begin{itemize}
+    \item Zerlegung des Wertebereichs der Eingabeparameter einer Funktion und den Definitionsbereich der Ausgabeparameter in Äquivalenzklassen (ÄK)
+    \item Ziel ist es, die Annahme über die Verarbeitung eines Wertes einer ÄK machen zu können, dass sich alle Werte  
+  \end{itemize}
+  \item Grenzwertanalyse
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \item Zufallstests
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \item Test von Zustandsautomaten
+  \begin{itemize}
+    \item 
+  \end{itemize}
 \end{itemize}
 
 \section{Abnahme, Einsatz und Wartung}
