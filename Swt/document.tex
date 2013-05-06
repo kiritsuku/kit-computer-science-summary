@@ -301,10 +301,247 @@
   \end{itemize}
   \item Test von Zustandsautomaten
   \begin{itemize}
-    \item 
+    \item Hat eine Komponente einen internen Zustand, können Testfälle aus den Zustandsübergängen abgeleitet werden
+    \item Das Ziel ist, all diese Übergänge mindestens einmal zu durchlaufen
+    \item Vollständige Überdeckung garantiert noch keinen vollständigen Test (vgl. Zweigüberdeckung)
+    \item Der $\alpha-\omega-Zyklus$ bezeichnet den kompletten Lebenszyklus eines Objektes, von Konstruktion bis Destruktion
   \end{itemize}
 \end{itemize}
 
+\subsection{Leistungstests}
+\begin{itemize}
+  \item Lasttests
+  \begin{itemize}
+    \item Testet das System/die Komponente auf Zuverlässigkeit und das Einhalten der Spezifikation im erlaubten Grenzbereich
+  \end{itemize}
+  \item Stresstests
+  \begin{itemize}
+    \item Testet das Verhalten des Systems beim Überschreiten der definierten Grenzen
+  \end{itemize}
+\end{itemize}
+
+\subsection{Manuelle Prüfmethoden/Software-Inspektionen}
+\begin{itemize}
+  \item Einzige Möglichkeit die Semantik zu prüfen
+  \item Sehr aufwendig in Zeit und Kosten
+  \item Die Arbeit wird z.T. durch eine Gruppe begutachtet, den Inspektoren
+  \item Inspektoren untersuchen unabhängig voneinander dasselbe Software-Dokument
+  \item Defekte werden aufgeschrieben und durchgesprochen aber noch nicht gelöst
+  \item Abgrenzung
+  \begin{itemize}
+    \item \textit{Inspektion (inspection)}: Überprüfung anhand von Prüflisten oder Lesetechniken
+    \item \textit{Überprüfung (review)}: Mehr oder weniger formalisierter Prozess (mehr Durchsicht als Inspektion) zur Überprüfung
+    \item \textit{Durchsicht (walkthrough)}: Der Entwickler zeigt Kollegen seine Arbeit, damit diese Fragen stellen oder Anmerkungen machen können
+  \end{itemize}
+  \item Inspektion ist eine formale Qualitätssicherungstechnik, bei der Fehler und Probleme gefunden werden sollen
+  \item Inspektionen sind jederzeit durchführbar, überall anwendbar und daher in der Praxis sehr effektiv
+  \item Inspektionen sind nur sehr aufwendig von Hand möglich und benötigen viele Ressourcen (Geld, Mitarbeiter)
+  \item Der Großteil aller Defekte werden bei Inspektionen gefunden
+  \begin{itemize}
+    \item Gedanke: "Viele sehen mehr als einer."
+    \item Inspektoren bringen Erfahrung mit und haben Abstand zum Software-Dokument
+    \item Gemeinsame Diskussion über Problempunkte innerhalb der Gruppe
+  \end{itemize}
+  \item Phasen einer Inspektion
+  \begin{itemize}
+    \item Vorbereitung
+    \begin{itemize}
+      \item Teilnehmer und Rollen festlegen
+      \item Dokumente und Formulare vorbereiten
+      \item Lesetechniken festlegen
+      \item Zeitlicher Ablauf planen
+    \end{itemize}
+    \item Individuelle Fehlersuche (IF)
+    \begin{itemize}
+      \item Jeder Inspektor prüft eigenständig
+      \item Benutzung der vereinbarten Lesetechnik
+      \item Problempunkte, Verbesserungsvorschläge und Fragen werden aufgeschrieben
+    \end{itemize}
+    \item Gruppensitzung (GS)
+    \begin{itemize}
+      \item Individuell gefundene Problempunkte sammeln
+      \item Problempunkte besprechen
+      \item Fragen klären
+      \item Verbesserungsvorschläge zur Durchführung von Inspektionen sammeln
+    \end{itemize}
+    \item Nachbereitung
+    \begin{itemize}
+      \item Liste mit Problempunkten wird an den Editor des Dokuments weitergeleitet
+      \item Editor identifiziert tatsächliche Defekte und klassifiziert sie
+      \item Editor leitet Änderungen des Dokuments ein
+      \item Nach Bearbeitung der Problempunkte erfolgt eine nochmalige Überprüfung
+    \end{itemize}
+    \item Prozessverbesserung
+    \begin{itemize}
+      \item Prüflisten und Szenarien anpassen
+      \item Standards für Dokumente erarbeiten
+      \item Defekt-Klassifikationsschema anpassen
+      \item Formulare verbessern
+      \item Planung und Durchführung verbessern
+    \end{itemize}
+  \end{itemize}
+  \item Rollen bei einer Inspektion
+  \begin{itemize}
+    \item \textit{Inspektionsleiter}: Leitet alle Phasen der Inspektion
+    \item \textit{Moderator}: Leitet die Gruppensitzung (meist der Inspektionsleiter)
+    \item \textit{Inspektoren}: Prüfen das Dokument
+    \item \textit{Schriftführer}: Protokolliert Defekte in der Gruppensitzung
+    \item \textit{Editor}: Klassifiziert und behebt Defekte (meist der Autor)
+    \item \textit{Autor}: Hat das Dokument verfasst
+  \end{itemize}
+  \item Defektklassifikation
+  \begin{itemize}
+    \item schwerwiegend (major), leicht (minor)
+    \item Defekt (defect), Anregung (suggestion), Frage (question)
+    \item Defekttyp (orthogonal defect classification), hier: nach NASA SEL
+    \begin{itemize}
+      \item \textit{A}: ambigous information
+      \item \textit{E}: extraneous information
+      \item \textit{II}: inconsistent information
+      \item \textit{IF}: incorrect fact
+      \item \textit{MI}: missing information
+      \item \textit{MD}: miscellaneous defect
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Prüfprogramme}
+\begin{itemize}
+  \item Die statische Analyse einer Software findet während der Übersetzung der Quelltextes statt
+  \item Darunter fallen: Warnungen und Fehler, Programmierstil
+\end{itemize}
+
+\subsection{Integrationstests}
+\begin{itemize}
+  \item Voraussetzung: Jede involvierte Komponente wurde bereits für sich überprüft
+  \item Schrittweite Integration, indem Mocks und Dummies mit Implementierungen ersetzt werden und diese zu den bereits geprüften Komponenten ergänzt werden
+  \item Integrationsstrategien
+  \begin{itemize}
+    \item unmittelbar
+    \begin{itemize}
+      \item Benötigen keine Testtreiber und Platzhalter
+      \item Dafür müssen alle Systemkomponenten fertig und überprüft sein
+      \item Defekte sind schwer zu lokalisieren
+      \item Testüberdeckung ist schwierig sicherzustellen
+      \item Für größere Systeme daher nicht geeignet
+    \end{itemize}
+    \item inkrementell
+    \begin{itemize}
+      \item Testen fertiger Komponenten und Fertigstellung unfertiger Komponenten parallelisierbar
+      \item Testfälle leichter konstruierbar
+      \item Testüberdeckung prüfbar
+      \item Evtl. viele Testtreiber und/oder Testhelfer notwendig
+    \end{itemize}
+    \item vorgehensorientiert
+    \begin{itemize}
+      \item Integrationsreihenfolge leitet sich aus der Systemarchitektur ab
+    \end{itemize}
+    \item testzielorientiert
+    \begin{itemize}
+      \item Testfälle werden ausgehend von den Testzielen erstellt
+      \item Jeweils benötigte Komponenten werden "zusammenmontiert"
+    \end{itemize}
+  \end{itemize}
+  \begin{itemize}
+    \item inkrementell - vorgehensorientiert
+    \begin{itemize}
+      \item top-down
+      \begin{itemize}
+        \item Integration von höchster logischer Ebene her (z.B. Benutzeroberfläche)
+        \item Frühe Verfügbarkeit eines Simulationsmodells, anhand dessen Defekte in der Produktdefinition identifizierbar sind
+        \item Späte Prüfbarkeit des Zusammenspiels mit Hardware und Basissoftware
+        \item Integrierte Systemkomponenten setzen Dienste niedrigerer logischer Ebenen voraus $\to$ z.T. aufwendige, schwierig zu erstellende Testhelfer
+      \end{itemize}
+      \item bottom-up
+      \begin{itemize}
+        \item Integration von niedrigster logischer Ebene her (Komponenten, die selbst nicht von anderen Komponenten abhängen)
+        \item Testtreiber erforderlich
+        \item Leichteres Herstellen von Testbedingungen
+        \item Leichtere Interpretation von Testergebnissen
+        \item $\implies$ Die Vorteile von top-down sind hier entsprechend die Nachteile und umgekehrt
+      \end{itemize}
+      \item hardest-first
+      \begin{itemize}
+        \item Zuerst werden die kritischen (kompliziert zu testenden oder potenziell fehlerhaften) Komponenten integriert
+        \item Bei jedem Interationsschritt werden die kritschen Komponenten indirekt mitgeprüft $\to$ letztlich die am Besten getesteten Komponenten
+      \end{itemize}
+      \item inside-out
+      \begin{itemize}
+        \item Beginnt auf mittlerer Ebene mit der Integration
+        \item Schrittweise Integration in beide Richtungen auseinander
+        \item Vereinigt eher die Nachteile von top-down und bottom-up
+        \item $\implies$ höchstens sinnvoll in Verbindung mit hardest-first
+      \end{itemize}
+      \item outside-in
+      \begin{itemize}
+        \item Versuch, die Nachteile von top-down und bottom-up zu mindern
+        \item Beginnt gleichzeitig auch höchster und niedrigster logischer Ebene mit der Intergration
+        \item Schrittweise Integration in beide Richtungen aufeinander zu
+      \end{itemize}
+    \end{itemize}
+    \item unmittelbar - testzielorientiert
+    \begin{itemize}
+      \item big bang
+      \begin{itemize}
+        \item Alle Komponenten werden gleichzeitig integriert
+        \item Integrationstest kaum systematisierbar
+        \item Konstruktion von Testfällen schwierig
+        \item Defektsuche schwierig
+        \item "Nichts geht bis alles geht."
+      \end{itemize}
+      \item geschäftsprozessorientiert
+      \begin{itemize}
+        \item Alle vom Geschäftsprozess oder Anwendungsfall betroffenen Komponenten werden integriert
+      \end{itemize}
+    \end{itemize}
+    \item inkrementell - testzielorientiert
+    \begin{itemize}
+      \item funktionsorientiert
+      \begin{itemize}
+        \item Spezifikation funktionaler Testfälle ($\leftrightarrow$ funktionale Anforderungen)
+        \item Schrittweise Integration und Test der Komponenten, die durch die Testfälle betroffen sind
+      \end{itemize}
+      \item nach Verfügbarkeit
+      \begin{itemize}
+        \item Integration von Komponenten sofort nach Abschluss ihrer Überprüfung
+        \item Schrittweise Integration und Test
+        \item Reihenfolge durch Implementierungsfertigstellungsreihenfolge festgelegt ($\to$ schlechte Planbarkeit)
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Systemtest}
+\begin{itemize}
+  \item Prüfung des Komplettsystems gegen die Produktdefinition
+  \item System als "black box" -- nur die äußere Systemansicht (externe Schnittstellen, Benutzerschnittstellen)
+  \item Reale (realistische) Umgebung
+  \item Klassifikation
+  \begin{itemize}
+    \item \textit{Funktionaler Systemtest}: Überprüfung der funktionalen Qualitätsmerkmale Korrektheit und Vollständigkeit
+    \item \textit{Nichtfunktionaler Systemtest}: Überprüfung nichtfunktionaler Qualitätsmerkmale, wie z.B. Sicherheit, Benutzbarkeit, Interoperabilität, Dokumentaiton, Ausfallsicherheit, Leistungstests
+  \end{itemize}
+\end{itemize}
+
+\subsection{Regressionstest (regression test)}
+\begin{itemize}
+  \item Wiederholung eines bereits vollständig durchgeführten Systemtests, z.B. aufgrund von Pflege, Änderung und Korrektur des betrachteten Systems
+  \item Dient der Sicherstellung, dass das System nicht in einen schlechteren Zustand als vorher zurückgefallen ist
+  \item Zur Vereinfachung der Testauswertung werden die Ergebnisse des Regressionstests mit den Ergebnissen des vorausgegangenen Tests verglichen
+\end{itemize}
+
+\subsection{Abnahmetest (acceptance test)}
+\begin{itemize}
+  \item Spezieller Systemtest, bei dem der Kunde beobachtet und/oder mitwirkt, dessen reale Einsaztumgebung verwendet wird und nach Möglichkeit auch echte Daten verwendet werden
+  \item Die formale Abnahme ist die bindende (juristische) Erklärung der Annahme eines Produkts durch den Auftraggeber
+\end{itemize}
+
 \section{Abnahme, Einsatz und Wartung}
+\subsection{Abnahmphase}
+\subsection{Einführungsphase}
+%\subsection{Wartung & Pflege: Aufgaben und ihr Aufwand}
+\subsection{Wartung vs. Pflege}
+\subsection{Verbesserung der Pflege}
+\subsection{Verbesserung der Wartung}
 
 \end{document}
